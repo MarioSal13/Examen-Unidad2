@@ -29,10 +29,12 @@ function setup() {
   createCanvas(800, 600);
   background(200);
 
+  /*
   if (musicaFondo && musicaFondo.isLoaded()) {
     musicaFondo.setVolume(0.2); 
     musicaFondo.loop(); 
   }
+  */
 
   coloresBloques = [
     color(0, 255, 0),  
