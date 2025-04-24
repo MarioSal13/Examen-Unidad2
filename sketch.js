@@ -9,32 +9,9 @@ let score = 0;
 let coloresBloques = [];
 let estadoJuego = "pantallaControles"; 
 
-//soniddo
-//let sonidoGolpe;
-//let sonidoBarra;
-//let sonidoPelota;
-//let musicaFondo;
-
-/*
-function preload() {
-  musicaFondo = loadSound("fondo.mp3");
-  sonidoGolpe = loadSound("golpe.mp3");
-  sonidoBarra = loadSound("barra.mp3");
-  sonidoPelota = loadSound("pelota.mp3");
-}
-*/
-
-
 function setup() {
   createCanvas(800, 600);
   background(200);
-
-  /*
-  if (musicaFondo && musicaFondo.isLoaded()) {
-    musicaFondo.setVolume(0.2); 
-    musicaFondo.loop(); 
-  }
-  */
 
   coloresBloques = [
     color(0, 255, 0),  
@@ -47,7 +24,7 @@ function setup() {
     y: height - 30,
     w: 100,
     h: 15,
-    speed: 10
+    speed: 7
   };
 
   ball = {
@@ -61,7 +38,6 @@ function setup() {
 
 function draw() {
   background(30);
-
 
   if (estadoJuego === "pantallaControles") {
     mostrarPantallaControles();
@@ -125,11 +101,6 @@ for (let b of bloques) {
           let centroBloque = createVector(b.x + b.w / 2, b.y + b.h / 2);
           let diferencia = p5.Vector.sub(centroPelota, centroBloque);
 
-          /*
-          if (sonidoGolpe && sonidoGolpe.isLoaded()) {
-            sonidoGolpe.play();
-          }
-          */
           
           if (abs(diferencia.x) > abs(diferencia.y)) {
             ball.dx *= -1; 
@@ -163,28 +134,19 @@ for (let b of bloques) {
       ball.y + ball.r > paddle.y &&
       ball.x > paddle.x &&
       ball.x < paddle.x + paddle.w
-      
     ) {
-      /*if (sonidoBarra && sonidoBarra.isLoaded()) {
-        sonidoBarra.play();
-      }
-        */
       ball.dy *= -1;
       ball.y = paddle.y - ball.r;
     }
 
     // Caída
     if (ball.y > height) {
-      if (sonidoPelota && sonidoPelota.isLoaded()) {
-        sonidoPelota.play();
-      }
       vidas--;
       resetBall();
     }
 
     // Game over
     if (vidas <= 0) {
-      //if (musicaFondo && musicaFondo.isPlaying()) musicaFondo.stop();
       noLoop();
       estadoJuego = "gameOver";
       textAlign(CENTER);
@@ -208,7 +170,6 @@ for (let b of bloques) {
       if (nivelActual <= maxNiveles) {
         estadoJuego = "pantallaNivel";
       } else {
-        //if (musicaFondo && musicaFondo.isPlaying()) musicaFondo.stop();
         noLoop();
         estadoJuego = "gameOver";
         textAlign(CENTER);
@@ -266,12 +227,6 @@ function reiniciarJuego() {
   ball.y = height / 2;
   cargarNivel1();
   estadoJuego = "pantallaNivel";
-  /*
-  if (musicaFondo && musicaFondo.isLoaded()) {
-    musicaFondo.setVolume(0.2); 
-    musicaFondo.loop(); 
-  }
-  */
   loop();
 }
 
@@ -319,7 +274,7 @@ function cargarNivel2() {
 //crear Nivel 3 
 function cargarNivel3() {
   bloques = [];
-  let filas = 9, columnas = 11, w = 60, h = 20, margen = 5, offX = 30, offY = 40;
+  let filas = 1, columnas = 6, w = 60, h = 20, margen = 5, offX = 30, offY = 40;
   let especiales = new Set();
   while (especiales.size < 2) {
     especiales.add(`${floor(random(filas))},${floor(random(columnas))}`);
@@ -368,4 +323,3 @@ function mostrarPantallaControles() {
   textSize(20);
   text("Presiona ENTER para comenzar", width / 2, height - 80);
 }
-
