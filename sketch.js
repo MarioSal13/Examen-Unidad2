@@ -274,7 +274,7 @@ function cargarNivel2() {
 //crear Nivel 3 
 function cargarNivel3() {
   bloques = [];
-  let filas = 1, columnas = 6, w = 60, h = 20, margen = 5, offX = 30, offY = 40;
+  let filas = 9, columnas = 11, w = 60, h = 20, margen = 5, offX = 30, offY = 40;
   let especiales = new Set();
   while (especiales.size < 2) {
     especiales.add(`${floor(random(filas))},${floor(random(columnas))}`);
