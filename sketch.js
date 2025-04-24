@@ -165,9 +165,10 @@ for (let b of bloques) {
       ball.x < paddle.x + paddle.w
       
     ) {
-      if (sonidoBarra && sonidoBarra.isLoaded()) {
+      /*if (sonidoBarra && sonidoBarra.isLoaded()) {
         sonidoBarra.play();
       }
+        */
       ball.dy *= -1;
       ball.y = paddle.y - ball.r;
     }
