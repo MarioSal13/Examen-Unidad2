@@ -265,10 +265,12 @@ function reiniciarJuego() {
   ball.y = height / 2;
   cargarNivel1();
   estadoJuego = "pantallaNivel";
+  /*
   if (musicaFondo && musicaFondo.isLoaded()) {
     musicaFondo.setVolume(0.2); 
     musicaFondo.loop(); 
   }
+  */
   loop();
 }
 
